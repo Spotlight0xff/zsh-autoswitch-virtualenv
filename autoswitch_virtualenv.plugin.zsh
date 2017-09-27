@@ -82,6 +82,8 @@ function _default_venv()
      _maybeworkon "$AUTOSWITCH_DEFAULTENV"
   elif [[ -n "$VIRTUAL_ENV" ]]; then
      virtualenv_deactivate
+     # run postdeactivate hook
+     cd "$WORKON_HOME" && source postdeactivate && cd "$OLDPWD"
   fi
 }
 
